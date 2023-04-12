@@ -1,6 +1,56 @@
 {
   "name": "contra-ui-vue",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install",
+    "dev:storybook": "yarn workspace @contra-ui/vue storybook",
+    "build": "lerna build",
+    "build:core": "yarn workspace @contra-ui/vue build",
+    "lerna:clean": "lerna clean",
+    "lerna:bootstrap": "lerna bootstrap --use-workspaces",
+    "postlerna:bootstrap": "lerna run generate",
+    "lerna:link": "lerna link",
+    "lerna:new-version": "lerna version patch --conventional-commits",
+    "lerna:publish": "lerna publish from-package --dist-tag next"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "babel-eslint": "^10.1.0",
+    "commitizen": "^4.2.5",
+    "css-loader": "^5.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-jest": "^25.2.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-sonarjs": "^0.10.0",
+    "eslint-plugin-vue": "^8.4.0",
+    "husky": "^8.0.0",
+    "lerna": "^3.22.1",
+    "lint-staged": "^11.2.0",
+    "prettier": "^2.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "engines": {
+    "npm": ">=8.19.1",
+    "yarn": ">=1.22.18",
+    "node": ">=16.0.0 <17.0.0"
+  }
 }
