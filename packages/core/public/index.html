@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="format-detection" content="telephone=no, email=no" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="data-bizType" content="alipayina" />
+  <!-- LAZADA disable pull refresh -->
+  <meta id="WV.Meta.DisableRefresh" value="true" />
+  <!-- <meta name="data-aspm" content="a253"/>-->
+  <title>DANA</title>
+  <!-- <link rel="shortcut icon" href="/resource/imgs/favicon.ico" type="image/x-icon" />-->
+  <style>
+    @font-face {
+      font-weight: normal;
+      font-family: 'OpenSans';
+      src: url('https://a.m.dana.id/resource/fonts/OpenSans-SemiBold.ttf') format('truetype');
+    }
+
+    body,
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
+    .skeleton {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999999999;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .limit-app {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .skeleton img {
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    @keyframes flush {
+      0% {
+        left: -100%;
+      }
+
+      50% {
+        left: 0;
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
+
+    .sk-loading {
+      animation: flush 2s linear infinite;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(to left,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, .85) 50%,
+          rgba(255, 255, 255, 0) 100%)
+    }
+
+    @keyframes flush-a {
+      0% {
+        opacity: .1;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: .1;
+      }
+    }
+  </style>
+  <script>
+    !function (e) { function t(a) { if (i[a]) return i[a].exports; var n = i[a] = { exports: {}, id: a, loaded: !1 }; return e[a].call(n.exports, n, n.exports, t), n.loaded = !0, n.exports } var i = {}; return t.m = e, t.c = i, t.p = "", t(0) }([function (e, t) { "use strict"; Object.defineProperty(t, "__esModule", { value: !0 }); var i = window; t["default"] = i.flex = function (e, t) { var a = e || 100, n = t || 1, r = i.document, o = navigator.userAgent, d = o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i), l = o.match(/U3\/((\d+|\.){5,})/i), c = l && parseInt(l[1].split(".").join(""), 10) >= 80, p = navigator.appVersion.match(/(iphone|ipad|ipod)/gi), s = i.devicePixelRatio || 1; p || d && d[1] > 534 || c || (s = 1); var u = 1 / s, m = r.querySelector('meta[name="viewport"]'); m || (m = r.createElement("meta"), m.setAttribute("name", "viewport"), r.head.appendChild(m)), m.setAttribute("content", "width=device-width,user-scalable=no,initial-scale=" + u + ",maximum-scale=" + u + ",minimum-scale=" + u + ", viewport-fit=cover"), r.documentElement.style.fontSize = a / 2 * s * n + "px" }, e.exports = t["default"] }]);
+    flex(200, 1);
+  </script>
+  <!--preload block-->
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but vue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>

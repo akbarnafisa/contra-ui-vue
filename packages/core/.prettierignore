@@ -1,0 +1,3 @@
+src/pages/*
+**/*.test.js
+**/*.spec.js
