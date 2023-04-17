@@ -27,11 +27,22 @@ describe('Test CRadio Component', () => {
   it('should have a disabled attribute', () => {
     const wrapper = setup({
       label: 'Default - Disabled',
-      disabled: true,
+      isDisabled: true,
     })
 
     expect(wrapper.find('input').attributes('disabled')).toBeDefined()
     expect(wrapper.text()).toBe('Default - Disabled')
+  })
+
+
+  it('should have a readonly attribute', () => {
+    const wrapper = setup({
+      label: 'Default - Read only',
+      isReadonly: true,
+    })
+
+    expect(wrapper.find('input').attributes('readonly')).toBeDefined()
+    expect(wrapper.text()).toBe('Default - Read only')
   })
 
   it('should change the internal value to true or false when clicks on input', async () => {
@@ -43,7 +54,7 @@ describe('Test CRadio Component', () => {
     const input = wrapper.get('input[type="radio"]')
     await input.setValue(true)
 
-    expect(wrapper.emitted('update:checked')[0][0]).toBe(true)
+    expect(wrapper.emitted('update:isChecked')[0][0]).toBe(true)
     expect(wrapper.emitted('inputValue')[0][0]).toBe('test')
   })
 })
