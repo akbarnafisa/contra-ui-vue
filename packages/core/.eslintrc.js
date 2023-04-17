@@ -3,7 +3,8 @@ module.exports = {
   parserOptions: {
     parser: "@typescript-eslint/parser",
     sourceType: "module",
-    project: ["./tsconfig.json"],
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
     extraFileExtensions: [".vue"]
   },
   plugins: ["jest", "sonarjs", "@typescript-eslint"],

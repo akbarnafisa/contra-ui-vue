@@ -1,9 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Default",
-  "exclude": [
-    "node_modules"
-  ],
   "compilerOptions": {
     "jsx": "preserve",
     "target": "ES2015",
@@ -26,6 +21,10 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.js",
     "src/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
