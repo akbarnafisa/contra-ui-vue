@@ -33,6 +33,68 @@ const PlaygroundTemplate = args => ({
   `,
 })
 
+export const Checked = () => ({
+  components: { CRadio },
+  template: `
+    <div style="margin: 16px;">
+      <div style="margin-bottom: 16px;">
+        <CRadio>
+          My Checkbox
+        </CRadio>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <CRadio
+          :isChecked="true"
+        >
+          My Checkbox
+        </CRadio>
+      </div>
+    </div>
+  `,
+})
+
+export const Disabled = () => ({
+  components: { CRadio },
+  template: `
+    <div style="margin: 16px;">
+      <div style="margin-bottom: 16px;">
+        <CRadio :isDisabled="true">
+          My Checkbox
+        </CRadio>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <CRadio
+          :isDisabled="true"
+          :isChecked="true"
+        >
+          My Checkbox
+        </CRadio>
+      </div>
+    </div>
+  `,
+})
+
+export const Readonly = () => ({
+  components: { CRadio },
+  template: `
+    <div style="margin: 16px;">
+      <div style="margin-bottom: 16px;">
+        <CRadio :isReadonly="true">
+          My Checkbox
+        </CRadio>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <CRadio
+          :isReadonly="true"
+          :isChecked="true"
+        >
+          My Checkbox
+        </CRadio>
+      </div>
+    </div>
+  `,
+})
+
 export const Playground = PlaygroundTemplate.bind({})
 Playground.args = {
   value: 'My Radio',
