@@ -103,6 +103,75 @@ export const Sizes = () => ({
   `,
 })
 
+export const Disabled = () => ({
+  components: { CBtn },
+  template: `
+    <div style="margin: 16px;">
+      <div style="margin-bottom: 16px;">
+        <CBtn
+          variant="primary"
+          :isDisabled="true"
+        >
+          Button Text
+        </CBtn>
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <CBtn
+          variant="secondary"
+          :isDisabled="true"
+        >
+          Button Text
+        </CBtn>
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <CBtn
+          variant="tertiary"
+          :isDisabled="true"
+        >
+          Button Text
+        </CBtn>
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <CBtn
+          variant="destructive"
+          :isDisabled="true"
+        >
+          Button Text
+        </CBtn>
+      </div>
+    </div>
+  `,
+})
+
+export const FullWidth = () => ({
+  components: { CBtn },
+  template: `
+    <div style="margin: 16px;">
+      <div style="margin-bottom: 16px;">
+        <CBtn
+          variant="primary"
+          :isFullWidth="true"
+        >
+          Button Text
+        </CBtn>
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <CBtn
+          variant="primary"
+          size="small"
+          :isFullWidth="true"
+        >
+          Button Text
+        </CBtn>
+      </div>
+    </div>
+  `,
+})
+
 const PlaygroundTemplate = args => ({
   setup() {
     return {
