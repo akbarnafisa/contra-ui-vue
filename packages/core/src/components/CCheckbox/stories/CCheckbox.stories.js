@@ -14,16 +14,16 @@ export default {
 const PlaygroundTemplate = args => ({
   components: { CCheckbox },
   setup() {
-    const checked = ref(args.checked)
+    const isChecked = ref(args.isChecked)
     return {
       args,
-      checked,
+      isChecked,
     }
   },
   template: `
     <div style="margin: 16px;">
       <CCheckbox
-        v-model:checked="checked"
+        v-model:isChecked="isChecked"
         v-bind="args"
         @input="args.CCheckboxInput"
         @inputEvent="args.CCheckboxInputEvent"
@@ -33,13 +33,75 @@ const PlaygroundTemplate = args => ({
   `,
 })
 
+export const Checked = () => ({
+  components: { CCheckbox },
+  template: `
+    <div style="margin: 16px;">
+      <div style="margin-bottom: 16px;">
+        <CCheckbox>
+          My Checkbox
+        </CCheckbox>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <CCheckbox
+          :isChecked="true"
+        >
+          My Checkbox
+        </CCheckbox>
+      </div>
+    </div>
+  `,
+})
+
+export const Disabled = () => ({
+  components: { CCheckbox },
+  template: `
+    <div style="margin: 16px;">
+      <div style="margin-bottom: 16px;">
+        <CCheckbox :isDisabled="true">
+          My Checkbox
+        </CCheckbox>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <CCheckbox
+          :isDisabled="true"
+          :isChecked="true"
+        >
+          My Checkbox
+        </CCheckbox>
+      </div>
+    </div>
+  `,
+})
+
+export const Readonly = () => ({
+  components: { CCheckbox },
+  template: `
+    <div style="margin: 16px;">
+      <div style="margin-bottom: 16px;">
+        <CCheckbox :isReadonly="true">
+          My Checkbox
+        </CCheckbox>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <CCheckbox
+          :isReadonly="true"
+          :isChecked="true"
+        >
+          My Checkbox
+        </CCheckbox>
+      </div>
+    </div>
+  `,
+})
+
 export const Playground = PlaygroundTemplate.bind({})
 Playground.args = {
   value: 'My Checkbox',
   label: 'My Checkbox',
-  disabled: false,
+  isDisabled: false,
   id: 'input',
   name: 'my-data',
-  checked: false,
-  readonly: false,
+  isChecked: false,
+  isReadonly: false,
 }
