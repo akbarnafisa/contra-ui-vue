@@ -6,10 +6,10 @@
     >
       <input
         :id="id"
-        :checked="checked"
+        :checked="isChecked"
         :value="value"
-        :disabled="disabled || readonly"
-        :readonly="readonly"
+        :disabled="isDisabled || isReadonly"
+        :readonly="isReadonly"
         :name="name"
         type="radio"
         class="c-radio__input"
@@ -39,7 +39,7 @@ const props = defineProps({
     default: '',
     required: false,
   },
-  disabled: {
+  isDisabled: {
     type: Boolean,
     default: false,
   },
@@ -51,11 +51,11 @@ const props = defineProps({
     type: String,
     default: null,
   },
-  checked: {
+  isChecked: {
     type: Boolean,
     default: null,
   },
-  readonly: {
+  isReadonly: {
     type: Boolean,
     default: false,
   },
@@ -63,22 +63,22 @@ const props = defineProps({
 
 const radioClass = computed(() => [
   'c-radio',
-  props.disabled && 'c-radio--disabled',
+  props.isDisabled && 'c-radio--disabled',
 ])
 
 const emits =
   defineEmits<{
-    (eventName: 'update:checked', value: boolean): void
+    (eventName: 'update:isChecked', value: boolean): void
     (eventName: 'inputValue', value: string | boolean): void
     (eventName: 'inputEvent', value: Event): void
   }>()
 
 const onChange = ($e: Event) => {
-  if (props.readonly) {
+  if (props.isReadonly) {
     return
   }
   const $event = $e.target as HTMLInputElement
-  emits('update:checked', $event.checked)
+  emits('update:isChecked', $event.checked)
   emits('inputValue', props.value)
   emits('inputEvent', $e)
 }
