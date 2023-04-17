@@ -6,10 +6,10 @@
     >
       <input
         :id="id"
-        :checked="checked"
+        :checked="isChecked"
         :value="value"
-        :disabled="disabled || readonly"
-        :readonly="readonly"
+        :disabled="isDisabled || isReadonly"
+        :readonly="isReadonly"
         :name="name"
         type="checkbox"
         class="c-checkbox__input"
@@ -39,7 +39,7 @@ const props = defineProps({
     default: '',
     required: false,
   },
-  disabled: {
+  isDisabled: {
     type: Boolean,
     default: false,
   },
@@ -51,11 +51,11 @@ const props = defineProps({
     type: String,
     default: null,
   },
-  checked: {
+  isChecked: {
     type: Boolean,
     default: null,
   },
-  readonly: {
+  isReadonly: {
     type: Boolean,
     default: false,
   },
@@ -63,12 +63,12 @@ const props = defineProps({
 
 const checkboxClass = computed(() => [
   'c-checkbox',
-  props.disabled && 'c-checkbox--disabled',
+  props.isDisabled && 'c-checkbox--disabled',
 ])
 
 const emits =
   defineEmits<{
-    (eventName: 'update:checked', value: boolean): void
+    (eventName: 'update:isChecked', value: boolean): void
     (
       eventName: 'inputValue',
       checked: boolean,
@@ -78,11 +78,11 @@ const emits =
   }>()
 
 const onChange = ($e: Event) => {
-  if (props.readonly) {
+  if (props.isReadonly) {
     return
   }
   const $event = $e.target as HTMLInputElement
-  emits('update:checked', $event.checked)
+  emits('update:isChecked', $event.checked)
   emits('inputValue', $event.checked, props.value)
   emits('inputEvent', $e)
 }
