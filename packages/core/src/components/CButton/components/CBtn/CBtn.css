@@ -21,7 +21,7 @@
   content: "";
 }
 
-.c-button:active {
+.c-button:not([disabled]):active  {
   box-shadow: var(--c-color-grey-09) 0px 1px 0px;
 }
 
@@ -72,7 +72,7 @@
   border: 2px solid var(--c-color-red-05);
 }
 
-.c-button--destructive:active {
+.c-button--destructive:not([disabled]):active  {
   box-shadow: var(--c-color-red-05) 0px 1px 0px;
 }
 
