@@ -27,11 +27,21 @@ describe('Test CCheckbox Component', () => {
   it('should have a disabled attribute', () => {
     const wrapper = setup({
       label: 'Default - Disabled',
-      disabled: true,
+      isDisabled: true,
     })
 
     expect(wrapper.find('input').attributes('disabled')).toBeDefined()
     expect(wrapper.text()).toBe('Default - Disabled')
+  })
+
+  it('should have a disabled readonly', () => {
+    const wrapper = setup({
+      label: 'Default - Read only',
+      isReadonly: true,
+    })
+
+    expect(wrapper.find('input').attributes('readonly')).toBeDefined()
+    expect(wrapper.text()).toBe('Default - Read only')
   })
 
   it('should change the internal value to true or false when clicks on input', async () => {
@@ -43,11 +53,11 @@ describe('Test CCheckbox Component', () => {
     const input = wrapper.get('input[type="checkbox"]')
     await input.setValue(true)
 
-    expect(wrapper.emitted('update:checked')[0][0]).toBe(true)
+    expect(wrapper.emitted('update:isChecked')[0][0]).toBe(true)
     expect(wrapper.emitted('inputValue')[0]).toEqual([true, "test"])
 
     await input.setValue(false)
-    expect(wrapper.emitted('update:checked')[1][0]).toBe(false)
+    expect(wrapper.emitted('update:isChecked')[1][0]).toBe(false)
     expect(wrapper.emitted('inputValue')[1]).toEqual([false, "test"])
   })
 })
