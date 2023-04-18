@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "scripts": {
     "copy": "rimraf ./storybook-static && cp -R ../core/storybook-static ./",
-    "test": "PUPPETEER_CHROMIUM_REVISION=1108766 PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true  jest --forceExit"
+    "test": "PUPPETEER_CHROMIUM_REVISION=1108766 PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true  jest --forceExit",
+    "lint-staged": "lint-staged",
+    "lint": "prettier --write \"package.json\" \"src/**/*.js\" \"./*.js\""
   },
   "dependencies": {
     "fs-extra": "^9.1.0",
@@ -14,5 +16,10 @@
     "jest-image-snapshot": "6.1.0",
     "jest-puppeteer-docker": "1.4.2",
     "puppeteer": "19.9.0"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "prettier --write \"package.json\" \"{src,scripts}/**/*.js\""
+    ]
   }
 }
