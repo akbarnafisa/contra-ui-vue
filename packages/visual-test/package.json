@@ -1,0 +1,18 @@
+{
+  "name": "@contra-ui/visual-test",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "copy": "rimraf ./storybook-static && cp -R ../core/storybook-static ./",
+    "test": "PUPPETEER_CHROMIUM_REVISION=1108766 PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true  jest --forceExit"
+  },
+  "dependencies": {
+    "fs-extra": "^9.1.0",
+    "jest": "29.5.0",
+    "rimraf": "^3.0.2",
+    "jest-html-reporter": "3.7.1",
+    "jest-image-snapshot": "6.1.0",
+    "jest-puppeteer-docker": "1.4.2",
+    "puppeteer": "19.9.0"
+  }
+}
