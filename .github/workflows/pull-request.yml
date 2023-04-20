@@ -1,0 +1,40 @@
+name: build-pr
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  install-dependency:
+    name: Install depedency
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn --immutable
+
+
+  unit-tests:
+    name: Unit Tests
+    needs: [install-dependency]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn --immutable
+      - name: Run Lerna bootstrap
+        run: yarn lerna:bootstrap
+      - name: Run unit tests
+        run: yarn workspace @contra-ui/vue test:unit
