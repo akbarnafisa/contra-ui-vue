@@ -13,8 +13,8 @@
 import { computed, type PropType } from 'vue'
 import {
   CButtonVariantTypes,
-  CButtonTypes,
   CButtonSizeTypes,
+  CButtonTypes,
 } from '../../lib'
 
 const props = defineProps({
