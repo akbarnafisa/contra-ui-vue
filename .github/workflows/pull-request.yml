@@ -38,3 +38,49 @@ jobs:
         run: yarn lerna:bootstrap
       - name: Run unit tests
         run: yarn workspace @contra-ui/vue test:unit
+
+  visual-tests:
+    name: Visual tests
+    needs: [install-dependency]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn --immutable
+
+      - name: Run Lerna bootstrap
+        run: yarn lerna:bootstrap
+
+      - name: Build Storybook
+        run: yarn workspace @contra-ui/vue build --quiet
+
+      - name: Copy Storybook for visual tests
+        run: yarn workspace @contra-ui/visual-test copy
+
+      - name: Run visual tests
+        run: yarn workspace @contra-ui/visual-test test -u
+
+      - name: Check for any snapshots changes
+        run: sh scripts/porcelain.sh
+
+      - name: Set patch branch name
+        if: failure()
+        id: vars
+        run: echo ::set-output name=branch-name::"visual-snapshots/${{ github.head_ref }}"
+
+      - name: Create pull request with new snapshots
+        if: failure()
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: 'test(visual): update snapshots'
+          title: 'update visual snapshots: ${{ github.event.pull_request.title }}'
+          body: This is an auto-generated PR with visual snapshot updates for \#${{ github.event.number }}.
+          labels: automated pr
+          branch: ${{ steps.vars.outputs.branch-name }}
