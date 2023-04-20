@@ -59,7 +59,7 @@ jobs:
         run: yarn lerna:bootstrap
 
       - name: Build Storybook
-        run: yarn workspace @contra-ui/vue build --quiet
+        run: yarn workspace @contra-ui/vue build-storybook --quiet
 
       - name: Copy Storybook for visual tests
         run: yarn workspace @contra-ui/visual-test copy
