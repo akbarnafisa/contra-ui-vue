@@ -84,3 +84,4 @@ jobs:
           body: This is an auto-generated PR with visual snapshot updates for \#${{ github.event.number }}.
           labels: automated pr
           branch: ${{ steps.vars.outputs.branch-name }}
+          base: ${{ github.head_ref }}
