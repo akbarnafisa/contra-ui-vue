@@ -66,12 +66,11 @@ const radioClass = computed(() => [
   props.isDisabled && 'c-radio--disabled',
 ])
 
-const emits =
-  defineEmits<{
-    (eventName: 'update:isChecked', value: boolean): void
-    (eventName: 'inputValue', value: string | boolean): void
-    (eventName: 'inputEvent', value: Event): void
-  }>()
+const emits = defineEmits<{
+  (eventName: 'update:isChecked', value: boolean): void
+  (eventName: 'inputValue', value: string | boolean): void
+  (eventName: 'inputEvent', value: Event): void
+}>()
 
 const onChange = ($e: Event) => {
   if (props.isReadonly) {
@@ -84,4 +83,4 @@ const onChange = ($e: Event) => {
 }
 </script>
 
-<style lang="less" src="./Cradio.css" />
+<style lang="less" src="./CRadio.css" />
