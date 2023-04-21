@@ -4,7 +4,7 @@ if [ -z "$(git status --porcelain)" ];
 then
     echo "Working copy is clean"
 else
-    echo "Please commit your changes"
+    echo "Another Pull Request has been created. Please check it to accept or reject the visual changes."
     git status
     exit 1
 fi
